@@ -1,5 +1,6 @@
 import streamlit as st
 from astroquery.ipac.nexsci.nasa_exoplanet_archive import NasaExoplanetArchive
+import plotly.express as px
 
 
 @st.cache(show_spinner=False)
@@ -21,6 +22,16 @@ def get_exoplanet_data_by_astroquery():
     exoplanet_data = exoplanet_data.rename(columns=renamed_columns_dict)
 
     return exoplanet_data
+
+
+def plot_Keplers_3rd_law(selected_exoplanets):
+    selected_exoplanets['行星軌道週期平方'] = selected_exoplanets['行星軌道週期'] ** 2
+    selected_exoplanets['行星軌道半長軸立方'] = selected_exoplanets['行星軌道週期'] ** 3
+    fig = px.scatter(
+        selected_exoplanets, x='行星軌道半長軸立方', y='行星軌道週期平方', symbol='行星名稱'
+    )
+
+    return st.plotly_chart(fig, use_container_width=True)
 
 
 st.set_page_config(layout="wide")
@@ -51,6 +62,8 @@ if hostname in hostname_list:
         semi_major_axis = semi_major_axis_list[index]
         k = period ** 2 / semi_major_axis ** 3
         st.success(f"行星{pl_name}的「軌道週期平方除以軌道半長軸的立方」為{k}")
+
+    plot_Keplers_3rd_law(selected_exoplanets)
 
 else:
     st.error('輸入的母恆星名稱並沒有在資料庫中')
