@@ -24,7 +24,7 @@ def get_exoplanet_data_by_astroquery():
 
 
 st.set_page_config(layout="wide")
-st.title('用NASA太陽系外行星資料庫的資料驗證[克卜勒第三定律](https://zh.wikipedia.org/zh-tw/%E5%BC%80%E6%99%AE%E5%8B%92%E5%AE%9A%E5%BE%8B#%E5%BC%80%E6%99%AE%E5%8B%92%E7%AC%AC%E4%B8%89%E5%AE%9A%E5%BE%8B)')
+st.title('用[NASA太陽系外行星資料庫](https://exoplanetarchive.ipac.caltech.edu/)的資料驗證[克卜勒第三定律](https://zh.wikipedia.org/zh-tw/%E5%BC%80%E6%99%AE%E5%8B%92%E5%AE%9A%E5%BE%8B#%E5%BC%80%E6%99%AE%E5%8B%92%E7%AC%AC%E4%B8%89%E5%AE%9A%E5%BE%8B)')
 st.info('克卜勒第三定律為各個行星繞其母恆星公轉週期的平方及其橢圓軌道的半長軸的立方成正比，本教材以NASA太陽系外行星資料庫的資料來驗證此定律。')
 
 with st.spinner('從[NASA太陽系外行星資料庫](https://exoplanetarchive.ipac.caltech.edu/)載入資料中，請稍候...'):
